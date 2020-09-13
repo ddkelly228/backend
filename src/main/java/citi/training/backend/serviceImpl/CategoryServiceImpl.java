@@ -3,6 +3,7 @@ package citi.training.backend.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import citi.training.backend.model.Category;
@@ -14,6 +15,8 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	//@Autowired
+	//private MongoTemplate mongoTemplate;
 	
 	public List<Category> getCategories() {
 		return categoryRepository.findAll();
@@ -21,18 +24,23 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void addCategory(String name) {
-		// TODO Auto-generated method stub
-		
+	public boolean addCategory(String name) {
+		// TODO Auto-generated method stub		
+		if(categoryRepository.existsByName(name)) {
+			return false;
+		}
 		Category category = new Category();
 		category.setName(name);
+		category.setReserved(0);
 		categoryRepository.save(category);
+		return true;
 		
 	}
 
 	@Override
 	public void removeCategory(int id) {
 		// TODO Auto-generated method stub
+		categoryRepository.deleteById(id);
 		
 	}
 	

@@ -11,6 +11,9 @@ public class Category {
 	
 	@Field("name")
 	private String name;
+	
+	@Field("reserved")
+	private int reserved;//0--可以删除；1--原有的，用户不可删除
 
 	public int getId() {
 		return id;
@@ -26,6 +29,14 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getReserved() {
+		return reserved;
+	}
+	
+	public void setReserved(int reserved) {
+		this.reserved = reserved;
 	}
 	
 	

@@ -7,4 +7,5 @@ import citi.training.backend.model.Category;
 
 public interface CategoryRepository extends MongoRepository<Category,Integer> {
 
+	boolean existsByName(String name);
 }
