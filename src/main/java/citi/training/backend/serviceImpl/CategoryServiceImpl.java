@@ -30,6 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 			return false;
 		}
 		Category category = new Category();
+		category.setId((int)categoryRepository.count());
 		category.setName(name);
 		category.setReserved(0);
 		categoryRepository.save(category);
@@ -38,9 +39,13 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void removeCategory(int id) {
+	public boolean removeCategory(int id) {
 		// TODO Auto-generated method stub
-		categoryRepository.deleteById(id);
+		if(categoryRepository.findById(id).get().getReserved()==0) {
+			categoryRepository.deleteById(id);
+			return true;
+		}
+		return false;
 		
 	}
 	

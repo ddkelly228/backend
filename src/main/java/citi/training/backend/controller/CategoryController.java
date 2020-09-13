@@ -40,8 +40,12 @@ public class CategoryController {
 	
 	@DeleteMapping(value="/category/remove/{id}")
 	public JSONObject removeCategory(@PathVariable(value = "id") int id) {
-		categoryServiceImpl.removeCategory(id);
-		return ResultUtils.success();
+		
+		if(categoryServiceImpl.removeCategory(id)) {
+			return ResultUtils.success();
+		}
+		return ResultUtils.error("sorry, the category can't be removed");
+
 	}
 	
 	

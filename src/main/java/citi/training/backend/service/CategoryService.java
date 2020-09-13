@@ -10,6 +10,6 @@ public interface CategoryService {
 	
 	boolean addCategory(String name);
 	
-	void removeCategory(int id);
+	boolean removeCategory(int id);
 
 }
