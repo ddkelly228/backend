@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
@@ -28,9 +29,8 @@ public class CategoryController {
 		return ResultUtils.success(list);
 	}
 	
-	@PostMapping(value="/category/add")
-	public JSONObject addCategory(@RequestBody JSONObject requestJson) {
-		 String name = requestJson.getString("name");
+	@PostMapping(value="/category")
+	public JSONObject addCategory(@RequestParam("name") String name) {
 		 if(categoryServiceImpl.addCategory(name)) {
 			 return ResultUtils.success();
 		 }
@@ -38,7 +38,7 @@ public class CategoryController {
 			
 	}
 	
-	@DeleteMapping(value="/category/remove/{id}")
+	@DeleteMapping(value="/category/{id}")
 	public JSONObject removeCategory(@PathVariable(value = "id") int id) {
 		
 		if(categoryServiceImpl.removeCategory(id)) {
