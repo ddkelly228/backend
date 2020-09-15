@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -27,12 +27,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.21</version>
-        </dependency>
+					<groupId>com.alibaba</groupId>
+					<artifactId>fastjson</artifactId>
+					<version>1.2.21</version>
+				</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -45,7 +45,27 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- excel解析包 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<!--处理2003 excel-->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.16</version>
+		</dependency>
+		<!--处理2007 excel-->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.16</version>
+		</dependency>
+
+
 	</dependencies>
+
+
+
 
 	<build>
 		<plugins>
