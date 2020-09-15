@@ -13,4 +13,5 @@ public interface TransactionService {
 	
 	Map<Integer,List<Transaction>> getTransactions(List<Integer> categoryIds, String stratDate, String endDate);
 
+	void FileProcess(List<String[]> list);
 }

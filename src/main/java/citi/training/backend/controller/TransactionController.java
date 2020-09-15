@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import citi.training.backend.model.Transaction;
 import citi.training.backend.serviceImpl.TransactionServiceImpl;
+import citi.training.backend.utils.FileProcess;
 import citi.training.backend.utils.ResultUtils;
 import citi.training.backend.utils.SingleFileUpload;
 
@@ -66,12 +67,12 @@ public class TransactionController {
 	
 	//文件上传
 	@PostMapping(value="/fileupload")
-	public JSONObject fileUpLoad(@RequestParam("myfile") MultipartFile file) {
-		if(SingleFileUpload.upload(file)) {
-			
-			return ResultUtils.success();
-		}
-		return ResultUtils.error("There is something wrong in upload file");
+	public JSONObject fileUpLoad() {//@RequestParam("myfile") MultipartFile file
+		//if(SingleFileUpload.upload(file)) {
+		transactionServiceImpl.FileProcess(FileProcess.process("D:\\upload\\zxyhtrac.xls"));
+			return ResultUtils.success(FileProcess.process("D:\\upload\\zxyhtrac.xls"));
+		//}
+		//return ResultUtils.error("There is something wrong in upload file");
 	}
 	
 
