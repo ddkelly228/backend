@@ -28,6 +28,13 @@ public class TransactionController {
 	@Autowired
 	private TransactionServiceImpl transactionServiceImpl;
 	
+	//成批增加数据，前端处理文件后
+	@PostMapping(value="")
+	public JSONObject addTransactions(@RequestParam("transactions") List<Transaction> transactions) {
+		
+		return null;
+	}
+	
 	@PostMapping(value="/transaction")
 	public JSONObject addTransaction(@RequestParam("categoryId") int categoryId,@RequestParam("date") String date,
 			@RequestParam("expense") float expense ,@RequestParam("description") String description) {

@@ -93,7 +93,7 @@ public class TransactionServiceImpl implements TransactionService {
 			//处理费用
 			if(list.get(i)[1].equals("__")) {
 				//该笔费用为支出
-				expense = Float.parseFloat(list.get(i)[2].replaceAll(",", ""));			
+				expense =0-Float.parseFloat(list.get(i)[2].replaceAll(",", ""));			
 			}else {
 				expense = Float.parseFloat(list.get(i)[1].replaceAll(",", ""));
 			}
