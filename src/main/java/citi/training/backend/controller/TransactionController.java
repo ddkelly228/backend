@@ -67,12 +67,12 @@ public class TransactionController {
 	
 	//文件上传
 	@PostMapping(value="/fileupload")
-	public JSONObject fileUpLoad() {//@RequestParam("myfile") MultipartFile file
-		//if(SingleFileUpload.upload(file)) {
-		transactionServiceImpl.FileProcess(FileProcess.process("D:\\upload\\zxyhtrac.xls"));
-			return ResultUtils.success(FileProcess.process("D:\\upload\\zxyhtrac.xls"));
-		//}
-		//return ResultUtils.error("There is something wrong in upload file");
+	public JSONObject fileUpLoad(@RequestParam("myfile") MultipartFile file) {
+		if(SingleFileUpload.upload(file)) {
+		transactionServiceImpl.FileProcess(FileProcess.process("D:\\upload\\"+file.getOriginalFilename()));
+			return ResultUtils.success();
+		}
+		return ResultUtils.error("There is something wrong in upload file");
 	}
 	
 
